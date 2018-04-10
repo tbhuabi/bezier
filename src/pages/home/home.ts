@@ -114,7 +114,16 @@ export class HomeComponent implements OnInit {
     }
 
     change(n: number) {
-        this.bgCanvasContext.clearRect(-500, -500, 1000, 1000);
+        const context = this.bgCanvasContext;
+        context.clearRect(-500, -500, 1000, 1000);
+
+        context.strokeStyle = '#333';
+        context.beginPath();
+        context.moveTo(n * 4, 400);
+        context.lineTo(n * 4, -400);
+        context.closePath();
+        context.stroke();
+
         this.drawBg();
         this.bezier.update(n / 100);
     }
