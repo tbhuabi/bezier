@@ -5,7 +5,6 @@
   "main": "./bundles/index.js",
   "module": "./bundles/index.js",
   "typings": "./bundles/index.d.ts",
-  "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development node server/server.js",
     "pack": "webpack-dev-server --inline --progress --port 8080",
