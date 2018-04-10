@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     private lineCanvasContext: CanvasRenderingContext2D;
 
     ngOnInit() {
-        const arr = [.48, .08, 0.5, -.4, .21, .8];
+        const arr: Array<number> = [.35, .66, .04, 1];
 
         this.bezier = new Bezier(arr);
 
