@@ -1,42 +1,37 @@
 {
   "name": "tanbo-bezier",
-  "version": "1.0.0",
-  "description": "A webpack starter for Angular",
-  "main": "server/server.js",
+  "version": "0.0.1",
+  "description": "A bezier library",
+  "main": "./bundles/index.js",
+  "module": "./bundles/index.js",
+  "typings": "./bundles/index.d.ts",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development node server/server.js",
     "pack": "webpack-dev-server --inline --progress --port 8080",
     "test": "karma start",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config config/webpack.prod.js --progress --profile --bail",
+    "lib": "webpack --config config/webpack.lib.js --progress --profile --bail --optimize-minimize",
+    "build:lib": "rimraf bundles && npm run lib  && tsc -p ts-config-build.json",
     "production": "npm run build && node server/product-server.js"
   },
   "keywords": [
-    "angular",
-    "typescript",
-    "ts",
-    "webpack",
-    "es6"
+    "bezier"
   ],
   "author": "tanbo",
-  "license": "ISC",
-  "dependencies": {
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
     "@angular/animations": "5.0.3",
     "@angular/common": "5.0.3",
     "@angular/compiler": "5.0.3",
+    "@angular/compiler-cli": "5.0.3",
     "@angular/core": "5.0.3",
     "@angular/forms": "5.0.3",
     "@angular/http": "5.0.3",
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
     "@angular/router": "5.0.3",
-    "core-js": "2.5.1",
-    "normalize.css": "7.0.0",
-    "rxjs": "5.5.2",
-    "zone.js": "0.8.18"
-  },
-  "devDependencies": {
-    "@angular/compiler-cli": "5.0.3",
     "@ngtools/webpack": "1.8.4",
     "@types/jasmine": "2.8.2",
     "@types/node": "8.0.53",
@@ -46,6 +41,7 @@
     "awesome-typescript-loader": "3.4.0",
     "codelyzer": "4.0.1",
     "connect-history-api-fallback": "1.5.0",
+    "core-js": "2.5.1",
     "cross-env": "5.1.1",
     "css-loader": "0.28.7",
     "enhanced-resolve": "3.4.1",
@@ -67,11 +63,13 @@
     "karma-webpack": "2.0.6",
     "ng-router-loader": "2.1.0",
     "node-sass": "^4.8.3",
+    "normalize.css": "^8.0.0",
     "null-loader": "0.1.1",
     "open": "0.0.5",
     "postcss": "6.0.14",
     "postcss-loader": "2.0.9",
     "rimraf": "2.6.2",
+    "rxjs": "5.5.2",
     "sass-loader": "^6.0.7",
     "style-loader": "0.19.0",
     "tanbo-ui-native": "^3.4.15",
@@ -85,6 +83,14 @@
     "webpack-dev-middleware": "1.12.1",
     "webpack-dev-server": "2.9.4",
     "webpack-hot-middleware": "2.21.0",
-    "webpack-merge": "4.1.1"
+    "webpack-merge": "4.1.1",
+    "zone.js": "0.8.18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbhuabi/tanbo-bezier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tbhuabi/tanbo-ui-bezier.git/issues"
   }
 }

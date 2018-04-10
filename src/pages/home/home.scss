@@ -1,9 +1,26 @@
 .input-wrap {
     padding-left: 40px;
-    padding-top: 40px;
     font-size: 20px;
 }
 
 ui-input {
     width: 200px;
+}
+
+.canvas-wrap {
+    width: 500px;
+    height: 500px;
+    border: 1px solid #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) rotateX(180deg);
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
 }

@@ -1,5 +1,9 @@
-
 <div class="input-wrap">
-  <p>{{progress}}</p>
-  <ui-input type="range" [(ngModel)]="progress" (change)="change($event)"></ui-input>
+  <p>{{ progress }} <ui-input type="range" [(ngModel)]="progress" (change)="change($event)"></ui-input></p>
+
+</div>
+
+<div class="canvas-wrap">
+    <canvas #canvas1></canvas>
+    <canvas #canvas2></canvas>
 </div>
