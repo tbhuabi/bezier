@@ -59,8 +59,8 @@ export class HomeComponent implements OnInit {
 
     drawBg() {
         const context = this.bgCanvasContext;
-        for (let i = 0; i < 20; i++) {
-            context.strokeStyle = '#ccc';
+        for (let i = 0; i < 21; i++) {
+            context.strokeStyle = '#eee';
             context.beginPath();
             context.moveTo(i * 40 - 400, -400);
             context.lineTo(i * 40 - 400, 400);
@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
         const context = this.bgCanvasContext;
         context.clearRect(-500, -500, 1000, 1000);
 
-        context.strokeStyle = '#333';
+        context.strokeStyle = '#666';
         context.beginPath();
         context.moveTo(n * 4, 400);
         context.lineTo(n * 4, -400);
