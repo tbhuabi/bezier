@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
         context.beginPath();
         this.bezier.onUpdatePoint(point => {
             if (prevPoint) {
-                context.moveTo(point.x * 400, point.y * 400)
+                context.moveTo(point.x * 400, point.y * 400);
             } else {
                 context.lineTo(point.x * 400, point.y * 400);
             }
