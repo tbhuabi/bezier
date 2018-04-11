@@ -1,6 +1,6 @@
 {
   "name": "tanbo-bezier",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A bezier library",
   "main": "./bundles/index.js",
   "module": "./bundles/index.js",
@@ -71,7 +71,7 @@
     "rxjs": "5.5.2",
     "sass-loader": "^6.0.7",
     "style-loader": "0.19.0",
-    "tanbo-ui-native": "^3.4.15",
+    "tanbo-ui-native": "^3.4.17",
     "to-string-loader": "1.1.5",
     "tslint": "5.8.0",
     "tslint-formatter-eslint-style": "0.0.1",

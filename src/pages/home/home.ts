@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { Bezier, BezierPoint } from '../../lib/index';
+import { CSSBezier, BezierPoint } from '../../lib/index';
 
 @Component({
     templateUrl: './home.html',
@@ -13,16 +13,16 @@ export class HomeComponent implements OnInit {
     @ViewChild('canvas2')
     lineCanvas: ElementRef;
 
-    bezier: Bezier;
+    bezier: CSSBezier;
     progress: number = 0;
 
     private bgCanvasContext: CanvasRenderingContext2D;
     private lineCanvasContext: CanvasRenderingContext2D;
 
     ngOnInit() {
-        const arr: Array<number> = [-.35, -1.66, .6, 1.4];
+        // const arr: Array<number> = [.44, .2, .04, 1];
 
-        this.bezier = new Bezier(arr);
+        this.bezier = new CSSBezier(.8, .2, .8, 1);
 
         const bgCanvas = this.bgCanvas.nativeElement;
         const lineCanvas = this.lineCanvas.nativeElement;
