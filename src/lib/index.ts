@@ -168,11 +168,11 @@ export class CSSBezier {
     }
 
     private getProgress(step: number): number {
-        const fn = (s: number, min: number, max: number): BezierPoint => {
+        const fn = (s: number, min: number, max: number): number => {
             let point = this.getPointByPoints(this.points, s, false);
             const xDistance = point.x - step;
             if (Math.abs(xDistance) < 0.000001) {
-                return point;
+                return s;
             }
             let next: number;
             if (xDistance < 0) {
@@ -185,8 +185,8 @@ export class CSSBezier {
             return fn(next, min, max);
         };
 
-        const point = fn(step, 0, 1);
-        this.getPointByPoints(this.points, point.x, true);
+        const s = fn(step, 0, 1);
+        const point = this.getPointByPoints(this.points, s, true);
         if (this.onUpdatePointCallback) {
             this.onUpdatePointCallback(point);
         }

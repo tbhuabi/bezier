@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         // const arr: Array<number> = [.44, .2, .04, 1];
 
-        this.bezier = new CSSBezier(.8, .2, .8, 1);
+        this.bezier = new CSSBezier(1, 0, 0, 1);
 
         const bgCanvas = this.bgCanvas.nativeElement;
         const lineCanvas = this.lineCanvas.nativeElement;
