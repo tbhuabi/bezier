@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     private lineCanvasContext: CanvasRenderingContext2D;
 
     ngOnInit() {
-        const arr: Array<number> = [.35, .66, .04, 1];
+        const arr: Array<number> = [-.35, -1.66, .6, 1.4];
 
         this.bezier = new Bezier(arr);
 
@@ -43,11 +43,20 @@ export class HomeComponent implements OnInit {
     drawBezier() {
         const context = this.lineCanvasContext;
         const bgContext = this.bgCanvasContext;
+
+        let prevPoint: BezierPoint;
+
+        context.beginPath();
         this.bezier.onUpdatePoint(point => {
-            context.beginPath();
-            context.arc(point.x * 400, point.y * 400, 1, 0, Math.PI * 2);
-            context.closePath();
-            context.fill();
+            if (prevPoint) {
+                context.moveTo(point.x * 400, point.y * 400)
+            } else {
+                context.lineTo(point.x * 400, point.y * 400);
+            }
+            // context.arc(point.x * 400, point.y * 400, 1, 0, Math.PI * 2);
+            // context.closePath();
+            context.strokeStyle = '#00f';
+            context.stroke();
 
             bgContext.beginPath();
             bgContext.fillStyle = '#00f';
@@ -95,7 +104,7 @@ export class HomeComponent implements OnInit {
             this.drawPoint(startPoint);
 
             this.drawPoint(endPoint);
-            context.strokeStyle = '#f00';
+            context.strokeStyle = '#f90';
             context.beginPath();
             context.moveTo(startPoint.x * 400, startPoint.y * 400);
             context.lineTo(endPoint.x * 400, endPoint.y * 400);

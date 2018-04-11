@@ -1,6 +1,6 @@
 {
   "name": "tanbo-bezier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A bezier library",
   "main": "./bundles/index.js",
   "module": "./bundles/index.js",

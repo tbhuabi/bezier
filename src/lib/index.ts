@@ -9,11 +9,20 @@ export class Bezier {
     private onUpdatePointCallback: (point: BezierPoint) => any;
     private onUpdateLineCallback: (startPoint: BezierPoint, endPoint: BezierPoint) => any;
 
-    constructor(args: Array<number>) {
-        this.points.push({
-            x: 0,
-            y: 0
-        });
+    /**
+     * 构造函数
+     * @param {Array<number>} args 贝塞尔曲线锚点的集合
+     * @param {boolean} autoComplete 是否自动添加 0,0 起点和 1,1 终点，默认为 true
+     */
+
+    constructor(args: Array<number>, autoComplete: boolean = true) {
+        if (autoComplete) {
+            this.points.push({
+                x: 0,
+                y: 0
+            });
+        }
+
         let point: BezierPoint = {
             x: null,
             y: null
@@ -33,20 +42,36 @@ export class Bezier {
         if (args.length % 2 !== 0) {
             point.y = 1;
         }
-        this.points.push({
-            x: 1,
-            y: 1
-        });
+        if (autoComplete) {
+            this.points.push({
+                x: 1,
+                y: 1
+            });
+        }
     }
+
+    /**
+     * 获取某一进度下，贝塞尔曲线的位置
+     * @param {number} step 当前进度
+     * @returns {number} 当前进度下的结果
+     */
 
     update(step: number): number {
         return this.getProgress(step);
     }
 
+    /**
+     * 注册贝塞尔曲线更新坐标信息时的回调
+     * @param {(point: BezierPoint) => any} fn 回调函数，参数为贝塞尔曲线当前坐标
+     */
     onUpdatePoint(fn: (point: BezierPoint) => any) {
         this.onUpdatePointCallback = fn;
     }
 
+    /**
+     * 注册贝塞尔曲线更新切线信息时的回调
+     * @param {(startPoint: BezierPoint, endPoint: BezierPoint) => any} fn 回调函数，参数为起始点，结束点
+     */
     onUpdateLine(fn: (startPoint: BezierPoint, endPoint: BezierPoint) => any) {
         this.onUpdateLineCallback = fn;
     }
