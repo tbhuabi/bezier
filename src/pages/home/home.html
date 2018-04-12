@@ -1,14 +1,17 @@
-<div class="input-wrap">
-  <p>
+<ui-flex class="input-wrap">
+  <ui-flex-item class="item-2">
     <ui-input type="range" [(ngModel)]="progress" (change)="change($event)"></ui-input>
-    <span style="margin-left: 30px;" >{{ progress }}</span>
-
-    <button type="button" (click)="run()">start</button>
-  </p>
-  <p><a routerLink="../other">CubicBezier</a></p>
-</div>
+    <span style="margin-left: 30px;">{{ progress }}</span>
+  </ui-flex-item>
+  <ui-flex-item>
+    <button class="btn primary" type="button" (click)="run()">start</button>
+  </ui-flex-item>
+  <ui-flex-item>
+    <a routerLink="../other">CubicBezier</a>
+  </ui-flex-item>
+</ui-flex>
 
 <div class="canvas-wrap">
-    <canvas #canvas1></canvas>
-    <canvas #canvas2></canvas>
+  <canvas #canvas1></canvas>
+  <canvas #canvas2></canvas>
 </div>

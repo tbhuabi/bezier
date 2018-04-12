@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule }  from '@angular/platform-browser';
-import { UIFormsModule } from 'tanbo-ui-native';
+import { UIFormsModule, UIComponentsModule } from 'tanbo-ui-native';
 
 import { AppComponent } from './app';
 
@@ -18,6 +18,7 @@ import { ApiInterceptor } from './api-interceptor';
         HttpClientModule,
         routing,
         UIFormsModule,
+        UIComponentsModule,
         FormsModule
     ],
     declarations: [
