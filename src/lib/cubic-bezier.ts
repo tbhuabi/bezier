@@ -80,8 +80,8 @@ export class CubicBezier implements BaseBezier {
             return fn(next, min, max);
         };
 
-        const s = fn(t, 0, 1);
-        const point = this.getPointByPoints(this.points, s, true);
+        const offsetX = fn(t, 0, 1);
+        const point = this.getPointByPoints(this.points, offsetX, true);
         if (this.onUpdatePointCallback) {
             this.onUpdatePointCallback(point);
         }
