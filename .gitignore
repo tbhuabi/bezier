@@ -5,7 +5,6 @@ bundles/
 middle-file/
 aot/
 dist/
-lib/
 proxy.config.js
 zip
 .idea
