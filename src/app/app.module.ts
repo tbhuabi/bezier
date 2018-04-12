@@ -8,6 +8,7 @@ import { UIFormsModule } from 'tanbo-ui-native';
 import { AppComponent } from './app';
 
 import { HomeComponent } from '../pages/home/home';
+import { OtherComponent } from '../pages/other/other.component';
 import { routing } from './app.routing';
 import { ApiInterceptor } from './api-interceptor';
 
@@ -21,7 +22,8 @@ import { ApiInterceptor } from './api-interceptor';
     ],
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        OtherComponent
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

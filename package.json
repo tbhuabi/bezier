@@ -1,6 +1,6 @@
 {
   "name": "tanbo-bezier",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A bezier library",
   "main": "./bundles/index.js",
   "module": "./bundles/index.js",
@@ -38,6 +38,7 @@
     "angular2-template-loader": "0.6.2",
     "autoprefixer": "7.1.6",
     "awesome-typescript-loader": "3.4.0",
+    "bezier": "^0.1.0",
     "codelyzer": "4.0.1",
     "connect-history-api-fallback": "1.5.0",
     "core-js": "2.5.1",

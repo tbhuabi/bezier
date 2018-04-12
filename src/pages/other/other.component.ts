@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { BezierPoint, Bezier } from '../../lib/index';
+import { CubicBezier, BezierPoint } from '../../lib/index';
 
 @Component({
-    templateUrl: './home.html',
-    styleUrls: ['./home.scss']
+    templateUrl: './other.component.html',
+    styleUrls: ['./other.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class OtherComponent implements OnInit {
     @ViewChild('canvas1')
     bgCanvas: ElementRef;
 
     @ViewChild('canvas2')
     lineCanvas: ElementRef;
 
-    bezier: Bezier;
+    bezier: CubicBezier;
     progress: number = 0;
 
     private bgCanvasContext: CanvasRenderingContext2D;
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     private prevPoint: BezierPoint;
 
     ngOnInit() {
-        this.bezier = new Bezier(0, 1, 1, 0);
+        this.bezier = new CubicBezier(0, 1, 1, 0);
 
         const bgCanvas = this.bgCanvas.nativeElement;
         const lineCanvas = this.lineCanvas.nativeElement;
