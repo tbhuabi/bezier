@@ -22,7 +22,7 @@ export class OtherComponent implements OnInit {
     private prevPoint: BezierPoint;
 
     ngOnInit() {
-        this.bezier = new CubicBezier(0, 1, 1, 0);
+        this.bezier = new CubicBezier(.36, .66, .04, 1);
 
         const bgCanvas = this.bgCanvas.nativeElement;
         const lineCanvas = this.lineCanvas.nativeElement;
@@ -44,11 +44,14 @@ export class OtherComponent implements OnInit {
         this.lineCanvasContext.closePath();
         this.prevPoint = null;
         this.progress = 0;
+        const arr: Array<number> = [];
         const fn = () => {
             if (this.progress < 100) {
                 this.progress += 1;
-                this.change(this.progress);
+                arr.push(this.change(this.progress));
                 requestAnimationFrame(fn);
+            } else {
+                console.log(arr.join('\n'));
             }
         };
         this.change(this.progress);
@@ -136,7 +139,7 @@ export class OtherComponent implements OnInit {
         context.fill();
     }
 
-    change(n: number) {
+    change(n: number): number {
         const context = this.bgCanvasContext;
         context.clearRect(-500, -500, 1000, 1000);
 
@@ -148,6 +151,6 @@ export class OtherComponent implements OnInit {
         context.stroke();
 
         this.drawBg();
-        this.bezier.update(n / 100);
+        return this.bezier.update(n / 100);
     }
 }
