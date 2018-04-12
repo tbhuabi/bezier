@@ -13,7 +13,7 @@ npm install tanbo-bezier --save
 import { Bezier, BezierPoint } from 'tanbo-bezier';
 
 // 可以传偶数个数字，且不少于4个
-const bezier = new Bezier([.48, .08, .21, .8, .3, 1]); 
+const bezier = new Bezier(.48, .08, .21, .8, .3, 1); 
 
 const div = document.getElementById('box');
 
@@ -46,7 +46,7 @@ requestAnimationFrame(fn);
 
 #### CSS贝塞尔曲线
 
-`CubicBezier` 默认为 0,0 点到 1,1 点。
+`CubicBezier` 默认为 0,0 点到 1,1 点，并对时间因子 `t` 做了偏移修正，让返回的 `point.x` 和 时间因子 `t` 保持同步，其效果同CSS的贝塞尔曲线一样。也就是说 `CubicBezier` 和 `Bezier` 传入同样参数的情况下，返回值是不一样的。
 
 ```typescript
 import { CubicBezier, BezierPoint } from 'tanbo-bezier';

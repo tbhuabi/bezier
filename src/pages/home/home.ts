@@ -23,9 +23,10 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.bezier = new Bezier(
-            0, 0,
-            -.8, -.3,
-            .1, .6,
+            -.9, -.7,
+            -.8, .4,
+            .1, -.6,
+            .2, -1,
             .5, .6,
             .5, 1.3,
             0, .9,
