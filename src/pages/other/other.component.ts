@@ -46,7 +46,7 @@ export class OtherComponent implements OnInit {
         this.progress = 0;
         const fn = () => {
             if (this.progress < 100) {
-                this.progress += 5;
+                this.progress += 1;
                 this.change(this.progress);
                 requestAnimationFrame(fn);
             }
