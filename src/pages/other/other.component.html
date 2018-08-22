@@ -1,14 +1,14 @@
-<ui-flex class="input-wrap">
-  <ui-flex-item class="item-2">
+<div class="ui-clearfix ui-container">
+  <div class="ui-col-md-4">
     <ui-input type="range" [(ngModel)]="progress" (change)="change($event)"></ui-input>
     <span style="margin-left: 30px;">{{ progress }}</span>
-  </ui-flex-item>
-  <ui-flex-item>
-    <button class="btn primary" type="button" (click)="run()">start</button>
-  </ui-flex-item>
-  <ui-flex-item>
-  </ui-flex-item>
-</ui-flex>
+  </div>
+  <div class="ui-col-md-4">
+    <button class="ui-btn ui-btn-primary" type="button" (click)="run()">start</button>
+  </div>
+  <div class="ui-col-md-4">
+  </div>
+</div>
 
 <div class="canvas-wrap">
   <canvas #canvas1></canvas>

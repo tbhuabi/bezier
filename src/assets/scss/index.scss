@@ -3,6 +3,9 @@
 @import "./base/float.scss";
 @import "units/page-wrap.scss";
 
+@import '~@tanbo/ui/assets/scss/varibles';
+@import '~@tanbo/ui/assets/scss/components';
+
 body {
     background-color: #fff !important;
 }

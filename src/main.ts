@@ -4,7 +4,6 @@ import { AppModule } from './app/app.module';
 
 import 'normalize.css';
 import './assets/scss/index.scss';
-import 'tanbo-ui-native/bundles/tanbo-ui-native.min.css';
 
 if (process.env.ENV === 'production') {
     enableProdMode();
