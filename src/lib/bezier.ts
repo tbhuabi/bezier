@@ -7,10 +7,10 @@ export class Bezier implements BaseBezier {
 
     /**
      * 构造函数
-     * @param {number} args 贝塞尔曲线锚点：x1, y1, x2, y2, x3, y3, ...
+     * @param {Array<number>} args 贝塞尔曲线锚点：x1, y1, x2, y2, x3, y3, ...
      */
 
-    constructor(...args: Array<number>) {
+    constructor(args: Array<number>) {
         if (args.length < 4) {
             throw new Error('[Bezier]: the parameters should not be less than 4.');
         }

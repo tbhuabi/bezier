@@ -13,7 +13,7 @@ npm install tanbo-bezier --save
 import { Bezier, BezierPoint } from 'tanbo-bezier';
 
 // 可以传偶数个数字，且不少于4个
-const bezier = new Bezier(.48, .08, .21, .8, .3, 1); 
+const bezier = new Bezier([.48, .08, .21, .8, .3, 1]); 
 
 const div = document.getElementById('box');
 
