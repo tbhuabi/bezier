@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   private prevPoint: BezierPoint;
 
   ngOnInit() {
-    this.bezier = new Bezier(
+    this.bezier = new Bezier([
         -.9, -.7,
         -.8, .4,
         .1, -.6,
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
         .5, .6,
         .5, 1.3,
         0, .9,
-        1, 1);
+        1, 1]);
 
     const bgCanvas = this.bgCanvas.nativeElement;
     const lineCanvas = this.lineCanvas.nativeElement;
