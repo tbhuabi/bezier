@@ -1,19 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { CubicBezier, BezierAnchor } from '../../lib/public-api';
+import { BezierAnchor, Bezier, CubicBezier } from '@tanbo/bezier';
 
-
-@Component({
-  templateUrl: './other.component.html',
-  styleUrls: ['./other.component.scss']
-})
-export class OtherComponent {
-  @ViewChild('canvas1')
-  bgCanvas: ElementRef;
-
-  @ViewChild('canvas2')
-  lineCanvas: ElementRef;
-
-  bezier: CubicBezier;
+class BezierExample {
   progress: number = 0;
 
   private bgCanvasContext: CanvasRenderingContext2D;
@@ -21,11 +8,9 @@ export class OtherComponent {
 
   private prevPoint: BezierAnchor;
 
-  ngOnInit() {
-    this.bezier = new CubicBezier(0.36, 0.66, 0.04, 1);
-
-    const bgCanvas = this.bgCanvas.nativeElement;
-    const lineCanvas = this.lineCanvas.nativeElement;
+  constructor(private bgCanvas: HTMLCanvasElement,
+              private lineCanvas: HTMLCanvasElement,
+              private bezier: Bezier) {
 
     bgCanvas.width = bgCanvas.height = 900;
     lineCanvas.width = lineCanvas.height = 900;
@@ -146,4 +131,45 @@ export class OtherComponent {
     });
     this.drawBezier(p);
   }
+}
+
+const bezierCanvasWrapper = document.getElementById('bezier');
+const bezierCanvasWrapper1 = document.getElementById('bezier2');
+
+const bezierExample = new BezierExample(
+  bezierCanvasWrapper.children[0] as HTMLCanvasElement,
+  bezierCanvasWrapper.children[1] as HTMLCanvasElement,
+  new Bezier([
+    -.9, -.7,
+    -.8, .4,
+    .1, -.6,
+    .2, -1,
+    .5, .6,
+    .5, 1.3,
+    0, .9,
+    1, 1]));
+
+
+
+document.getElementById('start1').onclick = function () {
+  bezierExample.run();
+}
+const range1 = document.getElementById('range1') as HTMLInputElement;
+range1.oninput = function () {
+  bezierExample.change(+range1.value)
+}
+
+
+const cubicBezierExample = new BezierExample(
+  bezierCanvasWrapper1.children[0] as HTMLCanvasElement,
+  bezierCanvasWrapper1.children[1] as HTMLCanvasElement,
+  new CubicBezier(0.36, 0.66, 0.04, 1)
+)
+
+document.getElementById('start2').onclick = function () {
+  cubicBezierExample.run();
+}
+const range2 = document.getElementById('range2') as HTMLInputElement;
+range2.oninput = function () {
+  cubicBezierExample.change(+range2.value)
 }

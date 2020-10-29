@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>贝塞尔曲线示例</title>
+  <style>
+      .canvas-wrap {
+          width: 500px;
+          height: 500px;
+          border: 1px solid #000;
+          transform: rotateX(180deg);
+          position: relative;
+      }
+
+      canvas {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+      }
+  </style>
+</head>
+<body>
+<h2>多次贝塞尔曲线</h2>
+<p>
+  <button type="button" id="start1">开始</button>
+</p>
+<p>
+  <input type="range" id="range1" value="0">
+</p>
+<div id="bezier" class="canvas-wrap">
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+
+<h2>三次贝塞尔曲线</h2>
+<p>
+  <button type="button" id="start2">开始</button>
+</p>
+<p>
+  <input type="range" id="range2" value="0">
+</p>
+<div id="bezier2" class="canvas-wrap">
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+</body>
+</html>

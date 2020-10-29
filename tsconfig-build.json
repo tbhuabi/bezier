@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "target": "es5",
     "module": "es2020",
     "moduleResolution": "node",
@@ -15,7 +16,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "baseUrl": "./",
-    "outDir": "bundles/",
+    "outDir": "package/bundles/",
     "paths": {
       "@tanbo/bezier": [
         "src/public-api.ts"
@@ -26,8 +27,6 @@
     }
   },
   "include": [
-    "index.ts",
-    "src/",
-    "test/"
+    "src/public-api.ts"
   ]
 }

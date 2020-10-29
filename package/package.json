@@ -1,0 +1,10 @@
+{
+  "name": "@tanbo/bezier",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./bundles/public-api.js",
+  "module": "./bundles/public-api.js",
+  "typings": "./bundles/public-api.d.ts",
+  "author": "tanbo",
+  "license": "ISC"
+}
