@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { BezierPoint, Bezier } from '../../lib/index';
+import { BezierAnchor, Bezier } from '../../lib/public-api';
 
 @Component({
   templateUrl: './home.html',
@@ -19,18 +19,18 @@ export class HomeComponent implements OnInit {
   private bgCanvasContext: CanvasRenderingContext2D;
   private lineCanvasContext: CanvasRenderingContext2D;
 
-  private prevPoint: BezierPoint;
+  private prevPoint: BezierAnchor;
 
   ngOnInit() {
     this.bezier = new Bezier([
-        -.9, -.7,
-        -.8, .4,
-        .1, -.6,
-        .2, -1,
-        .5, .6,
-        .5, 1.3,
-        0, .9,
-        1, 1]);
+      -.9, -.7,
+      -.8, .4,
+      .1, -.6,
+      .2, -1,
+      .5, .6,
+      .5, 1.3,
+      0, .9,
+      1, 1]);
 
     const bgCanvas = this.bgCanvas.nativeElement;
     const lineCanvas = this.lineCanvas.nativeElement;
@@ -43,9 +43,6 @@ export class HomeComponent implements OnInit {
     this.bgCanvasContext.translate(450, 450);
     this.lineCanvasContext.translate(450, 450);
     this.drawBg();
-
-    this.drawBezier();
-    this.drawLine();
   }
 
   run() {
@@ -63,29 +60,24 @@ export class HomeComponent implements OnInit {
     fn();
   }
 
-  drawBezier() {
+  drawBezier(point: BezierAnchor) {
     const context = this.lineCanvasContext;
     const bgContext = this.bgCanvasContext;
+    if (!this.prevPoint) {
+      context.beginPath();
+      context.moveTo(point.x * 400, point.y * 400);
+    } else {
+      context.lineTo(point.x * 400, point.y * 400);
+    }
+    this.prevPoint = point;
+    context.strokeStyle = '#00f';
+    context.stroke();
 
-    this.bezier.onUpdatePoint(point => {
-      if (!this.prevPoint) {
-        context.beginPath();
-        context.moveTo(point.x * 400, point.y * 400);
-      } else {
-        context.lineTo(point.x * 400, point.y * 400);
-      }
-      this.prevPoint = point;
-      // context.arc(point.x * 400, point.y * 400, 1, 0, Math.PI * 2);
-      // context.closePath();
-      context.strokeStyle = '#00f';
-      context.stroke();
-
-      bgContext.beginPath();
-      bgContext.fillStyle = '#00f';
-      bgContext.arc(point.x * 400, point.y * 400, 6, 0, Math.PI * 2);
-      bgContext.closePath();
-      bgContext.fill();
-    });
+    bgContext.beginPath();
+    bgContext.fillStyle = '#00f';
+    bgContext.arc(point.x * 400, point.y * 400, 6, 0, Math.PI * 2);
+    bgContext.closePath();
+    bgContext.fill();
   }
 
   drawBg() {
@@ -119,24 +111,19 @@ export class HomeComponent implements OnInit {
     context.stroke();
   }
 
-  drawLine() {
+  drawLine(start: BezierAnchor, end: BezierAnchor) {
     const context = this.bgCanvasContext;
+    // this.drawPoint(start);
 
-    this.bezier.onUpdateLine(((startPoint, endPoint) => {
-      this.drawPoint(startPoint);
-
-      this.drawPoint(endPoint);
-      context.strokeStyle = '#f90';
-      context.beginPath();
-      context.moveTo(startPoint.x * 400, startPoint.y * 400);
-      context.lineTo(endPoint.x * 400, endPoint.y * 400);
-      context.closePath();
-      context.stroke();
-    }));
-
+    context.strokeStyle = '#f90';
+    context.beginPath();
+    context.moveTo(start.x * 400, start.y * 400);
+    context.lineTo(end.x * 400, end.y * 400);
+    context.closePath();
+    context.stroke();
   }
 
-  drawPoint(point: BezierPoint) {
+  drawPoint(point: BezierAnchor) {
     const context = this.bgCanvasContext;
     context.beginPath();
     context.arc(point.x * 400, point.y * 400, 2, 0, Math.PI * 2);
@@ -156,6 +143,15 @@ export class HomeComponent implements OnInit {
     context.stroke();
 
     this.drawBg();
-    this.bezier.update(n / 100);
+    const p = this.bezier.update(n / 100, anchors => {
+      for (let i = 1; i < anchors.length; i++) {
+        const prev = anchors[i - 1];
+        const current = anchors[i];
+        this.drawLine(prev, current);
+        this.drawPoint(prev)
+        this.drawPoint(current)
+      }
+    });
+    this.drawBezier(p);
   }
 }

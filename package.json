@@ -2,9 +2,9 @@
   "name": "tanbo-bezier",
   "version": "1.0.0",
   "description": "A bezier library",
-  "main": "./bundles/index.js",
-  "module": "./bundles/index.js",
-  "typings": "./bundles/index.d.ts",
+  "main": "./bundles/public-api.js",
+  "module": "./bundles/public-api.js",
+  "typings": "./bundles/public-api.d.ts",
   "scripts": {
     "start": "cross-env NODE_ENV=development node server/server.js",
     "pack": "webpack-dev-server --inline --progress --port 8080",
