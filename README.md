@@ -2,17 +2,10 @@
 
 ## 安装
 ```
-npm install
+npm install @tanbo/bezier
 ```
 
-## 运行示例
-
-```
-npm start
-```
-
-
-# 使用说明
+## 使用说明
 
 在 web 开发中，我们经常会用动画来提高用户体验，但浏览器只提供了一个 css3 来实现动画的方式。css3 实现动画一般能满足大部分的需求，但当我们需要对动画做粗细的步长控制、暂停、重启等操作时，css3 提供的 `transitionstart`/`transitionend`、`animationstart`/`animationend` 接口明显不能满足我们需求。这时，就需要一个可定制、可编辑的贝塞尔曲线工具来实现我们想要的功能。
 
