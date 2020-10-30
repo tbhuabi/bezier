@@ -1,6 +1,8 @@
 import { Bezier, BezierAnchor } from './bezier';
 
 export class CubicBezier extends Bezier {
+  precision = 0.000001;
+
   constructor(x1: number, y1: number, x2: number, y2: number) {
     super([
       0, 0,
@@ -25,7 +27,7 @@ export class CubicBezier extends Bezier {
       let point = super.update(s);
       let xDistance = point.x - t;
 
-      if (Math.abs(xDistance) < 0.000001) {
+      if (Math.abs(xDistance) < this.precision) {
         return s;
       }
 
