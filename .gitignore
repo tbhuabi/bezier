@@ -2,3 +2,4 @@
 node_modules/
 package/bundles
 coverage
+package-lock.json

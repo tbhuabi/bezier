@@ -5,7 +5,7 @@
   "main": "./bundles/public-api.js",
   "module": "./bundles/public-api.js",
   "typings": "./bundles/public-api.d.ts",
-  "license": "ISC",
+  "license": "MIT",
   "author": {
     "name": "tanbo",
     "email": "tanbohb@gmail.com"
