@@ -19,13 +19,12 @@ export class CubicBezier extends Bezier {
 
   private newton(s: number) {
     const t = s;
-    let min = 0;
     let max = 1;
     // 牛顿法求解，根据当前的 t，求在曲线中的 y 点
 
     while (true) {
-      let point = super.update(s);
-      let xDistance = point.x - t;
+      const point = super.update(s);
+      const xDistance = point.x - t;
 
       if (Math.abs(xDistance) < this.precision) {
         return s;
@@ -34,7 +33,6 @@ export class CubicBezier extends Bezier {
       let next: number;
       if (xDistance < 0) {
         next = (s + max) / 2;
-        min = s;
       } else {
         next = s / 2;
         max = s;
